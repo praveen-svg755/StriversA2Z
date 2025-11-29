@@ -1,8 +1,5 @@
 package com.arrays.easy;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Remove_duplicates_from_Sorted_array {
 
     static int remove(int[] arr , int n){
