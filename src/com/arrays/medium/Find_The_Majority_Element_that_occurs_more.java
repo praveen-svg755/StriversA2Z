@@ -33,16 +33,42 @@ public class Find_The_Majority_Element_that_occurs_more {
         }
         int maxvalue = Collections.max(map.values());
         for(Map.Entry<Integer , Integer> entry : map.entrySet()){
-            if(entry.getValue().equals(maxvalue)){
+            if(entry.getValue() > n/2){
                 return entry.getKey();
             }
         }
         return -1;
     }
 
+    //optimal solution
+    static int majorityElement3(int[] arr){
+        int n = arr.length;
+        int ele = 0,cnt = 0;
+        for(int i=0 ; i<n ; i++){
+            if(cnt == 0){
+                cnt++;
+                ele = arr[i];
+            }else if(ele == arr[i]){
+                cnt++;
+            }else {
+                cnt--;
+            }
+        }
+
+        int cnt1 = 0;
+        for(int i : arr){
+            if(i == ele) cnt1++;
+        }
+
+        if(cnt1 > n/2) return ele;
+        else return -1;
+    }
+
     public static void main(String[] args) {
-        int[] nums = {1, 1, 1, 2, 1, 2};
-        System.out.print(majorityElement2(nums));
+        int[] nums = {2, 1, 1, 1, 2, 1, 2};
+        System.out.println(majorityElement1(nums));
+        System.out.println(majorityElement2(nums));
+        System.out.println(majorityElement3(nums));
 
     }
 }
